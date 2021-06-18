@@ -16,37 +16,48 @@
 
 <body>
     <header>
-        <h1>dev.finence$.handmade</h1>
+        <img src="../assets/logo.svg" alt="Logomarca dev finence" />
     </header>
     <main class="container">
         <section id="balance">
-            <h2>Balanço</h2>
+            <h2 class="sr-only">Balanço</h2>
 
             <div class="card">
-                <h3 class="card-label">Entradas</h3>
-                <h3 class="values">R$ 6000,00</h3>
+                <h3 class="card-label">
+                    <span>Entradas</span>
+                    <img src="../assets/income.svg" alt="Imagem de entradas">
+                </h3>
+                <div class="values">R$ 6000,00</div>
             </div>
 
             <div class="card">
-                <h3 class="card-label">Saídas</h3>
+                <h3 class="card-label">
+                    <span>Saídas</span>
+                    <img src="../assets/expense.svg" alt="Imagem de saídas">
+                </h3>
                 <h3 class="values">R$ 2500,00</h3>
             </div>
 
             <div id="total" class="card">
-                <h3 class="card-label">Total</h3>
+                <h3 class="card-label">
+                    <span>Total</span>
+                    <img src="../assets/total.svg" alt="Imagem do total">
+                </h3>
                 <h3 class="values">R$ 3500,00</h3>
             </div>
         </section>
 
         <section id="transactions">
-            <h2 id=>Transações</h2>
+            <h2 class="sr-only">Transações</h2>
 
+            <a href="#" onclick="Modal.open()">+ Nova transação</a>
             <table id="table-data">
                 <thead>
                     <tr>
                         <td>Descrição</td>
                         <td>Valor</td>
                         <td>Data</td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,16 +65,19 @@
                         <td>Internet</td>
                         <td>R$ -250,00</td>
                         <td>01/06/2021</td>
+                        <td><img src="../assets/minus.svg" alt=""></td>
                     </tr>
                     <tr>
                         <td>Salário</td>
                         <td>R$ 2000,00</td>
                         <td>01/06/2021</td>
+                        <td><img src="../assets/minus.svg" alt=""></td>
                     </tr>
                     <tr>
                         <td>Cartão</td>
                         <td>R$ -590,00</td>
                         <td>10/06/2021</td>
+                        <td><img src="../assets/minus.svg" alt=""></td>
                     </tr>
                 </tbody>
             </table>
@@ -71,7 +85,60 @@
         </section>
     </main>
 
+    <div class="modal-background">
+        <div class="modal">
+            <div id="form">
+                <h2>Nova Transação</h2>
+                <form action="">
+                    <div class="input-group">
+                        <label for="description" class="sr-only">Descrição</label>
+                        <input type="text" id="description" name="description" placeholder="Descrição" />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="value" class="sr-only">Valor</label>
+                        <input type="number" id="amount" name="amount" placeholder="Valor (Ex.: 2,00; 54,12;...)"
+                            step="0.1" />
+                        <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas
+                            decimais</small>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="date" class="sr-only">Data</label>
+                        <input type="date" />
+                    </div>
+                    <div class="input-group actions">
+                        <div class="buttons">
+                            <button id="button-cancel" onclick="Modal.close()">Cancelar</button>
+                            <button id="button-save">Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
     <footer>dev.finence$.handmade</footer>
+
+    <script>
+        const Modal = {
+            open() {
+                document.
+                    querySelector('.modal-background')
+                    .classList
+                    .add('active')
+
+            },
+            close() {
+                document.
+                    querySelector('.modal-background')
+                    .classList
+                    .remove('active')
+            }
+        }
+    </script>
+
 </body>
 
 </html>
